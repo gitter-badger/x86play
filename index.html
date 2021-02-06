@@ -28,8 +28,8 @@
 				<font size="4">Postify</font>
 			</button>
 		</h4>
-		<div align="right">
-			<label>code format:
+		<div align="left">
+			<label>CODE FORMAT&nbsp;
 				<select name = "input-type">
 					<option type="radio" name="input-format" checked="checked" value="assembly">Assembly</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
@@ -38,8 +38,17 @@
 		</div>
 		<textarea id="code" rows="1"></textarea>
 		<br/>
+		<div align="left">
+			<label>INPUT FORMAT&nbsp;
+				<select name = "input-type">
+					<option type="radio" name="input-format" checked="checked" value="raw bytes">raw bytes</option>
+					<option type="radio" name="input-format" value="xxd">xxd</option>
+				</select>
+			</label>
+		</div>
 		<textarea id="input" rows="1"></textarea>
 		<br/>
+		<div align="left"><b>OUTPUT</b></div>
 		<textarea id="output" rows="1"></textarea>
 
 	</body>

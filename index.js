@@ -24,6 +24,7 @@ window.onload = function() {
 		lineNumbers: true,
 		lineWrapping: true,
 		indentWithTabs: true,
+		readOnly: true,
 		scrollbarStyle: null
 	});
 }
