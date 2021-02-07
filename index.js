@@ -40,6 +40,7 @@ window.onload = function() {
 	var input = document.getElementById("input");
 	var cfmt = document.getElementById("code-format");
 	var ifmt = document.getElementById("input-format");
+	var submType = document.getElementById("code-type");
 	function d(x) {
 		return new TextDecoder("ascii").decode(inflate(b64ToArr(x)))
 	}
@@ -79,7 +80,7 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		output.innerText=link+"\n\n(link copied to clipboard)"
+		output.innerText="(link copied to clipboard)"
 		copyToClipboard(link);
 	})
 	document.getElementById("markdown").addEventListener('click', (event) => {
@@ -95,7 +96,7 @@ window.onload = function() {
 		    + "hexdump here"+"\n```\n\nListing:\n```\n"
 		    + "listing here"
 		    + "\n```\n\n"
-		    + "Standalone PC DOS executable. Input via command line, output to console.\n\n"
+		    + ((submType.value=="function")?"Callable function. Inputs <input> in <reg>, <input> in <reg>. Result in <reg>.\n\n":"Standalone DOS .COM executable. Input from STDIN, output to STDOUT.\n\n")
 		    + "[Try it on x86play]("+link+")"
 		output.innerText=fmt
 		copyToClipboard(fmt);
