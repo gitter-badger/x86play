@@ -30,12 +30,12 @@
 			<button title="Copy Markdown" style="border:none; padding:3px">
 				<font size="5" face="monospace">&nbsp;M↓ ]</font>
 			</button>
-			<button title="debug" style="border:none;">
-				<font size="5" face="monospace">[ dbg ]</font>
+			<button title="debug" style="border:none">
+				<font size="5" face="monospace" color="#989898">[ dbg ]</font>
 			</button>
 		</font>
 		<div align="left">
-			<label><font face="monospace" size="4">CODE FORMAT: </font>
+			<label><font face="monospace" size="4" color="#C0C0C0">CODE FORMAT: </font>
 				<select name = "input-type" style="border:none">
 					<option type="radio" name="input-format" checked="checked" value="assembly">Assembly</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
@@ -45,7 +45,7 @@
 		<textarea id="code" rows="1"></textarea>
 		<br/>
 		<div align="left">
-			<label><font face="monospace">INPUT FORMAT: </font>
+			<label><font face="monospace" size="3" color="#D3D3D3">INPUT FORMAT: </font>
 				<select name = "input-type" style="border:none">
 					<option type="radio" name="input-format" checked="checked" value="raw bytes">raw bytes</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
@@ -54,7 +54,7 @@
 		</div>
 		<textarea id="input" rows="1"></textarea>
 		<br/>
-		<div align="left"><b><font face="monospace">OUTPUT ↓ </font></b></div>
+		<div align="left"><b><font face="monospace" size="3">OUTPUT ↓ </font></b></div>
 		<textarea id="output" rows="1"></textarea>
 		</div>
 		<hr/>
