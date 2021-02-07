@@ -82,4 +82,17 @@ window.onload = function() {
 		output.innerText=link+"\n\n(link copied to clipboard)"
 		copyToClipboard(link);
 	})
+	document.getElementById("markdown").addEventListener('click', (event) => {
+		e = (x) => arrToB64(deflate(x))
+		function setfmt(c, i) {o=0;if(c=="xxd")o+=1;o<<=1;if(i=="xxd")o+=1;return o}
+		link = encodeURI(location.protocol+"//"
+		                    +location.host+location.pathname
+		                    +"?c="+e(code.value)
+		                    +"&i="+e(input.value)
+		                    +"&f="+setfmt(cfmt.value, ifmt.value)
+		           )
+		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\n```\n"+"hexdump here"+"\n```\n\nInstruction listing:\n```"+link
+		output.innerText=fmt
+		copyToClipboard(fmt);
+	})
 }
