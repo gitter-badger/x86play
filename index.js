@@ -17,11 +17,20 @@ function b64ToArr(str) {
 }
 
 window.onload = function() {
+	const urlParams = new URLSearchParams(window.location.search)
 	var code = document.getElementById("code");
 	var output = document.getElementById("output");
 	var input = document.getElementById("input");
 	var cfmt = document.getElementById("code-format");
 	var ifmt = document.getElementById("input-format");
+	function d(x) {
+		return new TextDecoder("ascii").decode(inflate(b64ToArr(x)))
+	}
+	code.value=d(urlParams.get("c")||"")
+	input.value=d(urlParams.get("i")||"")
+	cifmt=urlParams.get("f")
+	if(cifmt&2)cfmt.value="xxd"
+	if(cifmt&1)ifmt.value="xxd"
 	var CCode = CodeMirror.fromTextArea(code, {
 		mode: "text/x-ez80",
 		theme: "material",
@@ -38,27 +47,21 @@ window.onload = function() {
 		indentWithTabs: true,
 		scrollbarStyle: null
 	});
-	var COutput = CodeMirror.fromTextArea(output, {
-		mode: "text",
-		theme: "material",
-		lineNumbers: false,
-		lineWrapping: true,
-		indentWithTabs: true,
-		readOnly: true,
-		scrollbarStyle: null
-	});
 	CCode.on("change", e => {
 		CCode.save()
 	})
-
+	CInput.on("change", e => {
+		CInput.save()
+	})
 	document.getElementById("permalink").addEventListener('click', (event) => {
 		e = (x) => arrToB64(deflate(x))
-		function setfmt(c, i) {o=0;if(c=="raw")o+=1;o<<=1;if(i=="raw")o+=1;return o}
-		console.log(encodeURI(location.protocol+"//"
+		function setfmt(c, i) {o=0;if(c=="xxd")o+=1;o<<=1;if(i=="xxd")o+=1;return o}
+		link = encodeURI(location.protocol+"//"
 		                    +location.host+location.pathname
 		                    +"?c="+e(code.value)
-		                    +"?i="+e(input.value)
-		                    +"?f="+setfmt(cfmt.value, ifmt.value)
-		           ))
+		                    +"&i="+e(input.value)
+		                    +"&f="+setfmt(cfmt.value, ifmt.value)
+		           )
+		output.innerText=link
 	})
 }
