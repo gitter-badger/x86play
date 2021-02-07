@@ -14,9 +14,9 @@
 CodeMirror.defineMode('z80', function(_config, parserConfig) {
   var ez80 = parserConfig.ez80;
   var keywords1, keywords2;
-  keywords1 = /^(exx?|(ld|cp)([di]r?)?|[lp]ea|pop[af]?|push[af]?|ad[cd]|cpl|da[as]|addrsiz|arpl|bound|bsf|bswap|bt[crs]?|aa[adms]|cbw|cl[cdi]|cm[cp]|cmps[bw]|cmpxchg|cmpxchg8b|cpuid|cl?ts|cwd|das|i?div|i?mul|enter|fwait|dec|inc?|ins[bw]|into?|invd|invlpg|iret|j[agl]e|je?cxz|j[abceglosz]|jp[eo]|jmp|jn[ceglopsz]|jnge|jnbe?|lahf|lar|l[defg]s|l[gil]dt|lmsw|ls[ls]|ltr|mov|movsx?[bw]|lock|lods[bw]|loop[ez]?|loopn[ez]|leave|ro[lr]|sa(hf|l|r)|rc[lr]|rd(msr|tsc)|repn?[ez]?|neg|not|sbc|sub|and|bit|[cs]cf|x?or|res|set|r[lr]c?a?|r[lr]d|s[lr]a|srl|djnz|sbb|scas[bw]|seg|sgdt|sh[lr]d?|si(dt|z)|smsw|st[cdi]|stos[bw]|str|test|ver[rw]|wait|wbinvd|wrmsr|xadd|xchg|xlat|nop|[de]i|hlt|im|in([di]mr?|ir?|irx|2r?)|ot(dmr?|[id]rx|imr?)|out(0?|[di]r?|[di]2r?|s|sb)|tst(io)?|slp)(\.([sl]?i)?[sl])?\b/i;
-  keywords2 = /^(((call|j[pr]|rst|ret[in]?)(\.([sl]?i)?[sl])?)|(rs|st)mix)\b/i;
-  var variables1 = /^(af?|bc?|c|de?|e|hl?|l|i[xy]?|r|sp|ax|bx|cx|dx|si|di|sp|dp|al|ah|bl|bh|cl|ch|dl|dh)\b/i;
+  keywords1 = /^(exx?|(ld|cp)([di]r?)?|d[bwd]|[lp]ea|pop[af]?|push[af]?|ad[cd]|cpl|da[as]|addrsiz|arpl|bound|bsf|bswap|bt[crs]?|aa[adms]|cbw|cl[cdi]|cm[cp]|cmps[bw]|cmpxchg|cmpxchg8b|cpuid|cl?ts|cwd|das|i?div|i?mul|enter|fwait|dec|inc?|ins[bw]|into?|invd|invlpg|iret|j[agl]e|je?cxz|j[abceglosz]|jp[eo]|jmp|jn[ceglopsz]|jnge|jnbe?|lahf|lar|l[defg]s|l[gil]dt|lmsw|ls[ls]|ltr|mov|movsx?[bw]|lock|lods[bw]|loop[ez]?|loopn[ez]|leave|ro[lr]|sa(hf|l|r)|rc[lr]|rd(msr|tsc)|repn?[ez]?|neg|not|sbc|sub|and|bit|[cs]cf|x?or|res|set|r[lr]c?a?|r[lr]d|s[lr]a|srl|djnz|sbb|scas[bw]|seg|sgdt|sh[lr]d?|si(dt|z)|smsw|st[cdi]|stos[bw]|str|test|ver[rw]|wait|wbinvd|wrmsr|xadd|xchg|xlat|nop|[de]i|hlt|im|in([di]mr?|ir?|irx|2r?)|ot(dmr?|[id]rx|imr?)|out(0?|[di]r?|[di]2r?|s|sb)|tst(io)?|slp)(\.([sl]?i)?[sl])?\b/i;
+  keywords2 = /^(((call|j[pr]|rst|ret[in]?)(\.([sl]?i)?[sl])?)|(r|st)mix)\b/i;
+  var variables1 = /^(af?|bc?|c|de?|e|hl?|l|i[xy]?|r|sp|[abcd][xlh]|[sd]i|[sd]p|[cdefgs]s)\b/i;
   var variables2 = /^(n?[zc]|p[oe]?|m)\b/i;
   var errors = /^([hl][xy]|i[xy][hl]|slia|sll)\b/i;
   var numbers = /^([\da-f]+h|[0-7]+o|[01]+b|\d+d?)\b/i;
@@ -45,12 +45,12 @@ CodeMirror.defineMode('z80', function(_config, parserConfig) {
         if (true) {
           if ((state.context == 1 || state.context == 4) && variables1.test(w)) {
             state.context = 4;
-            return 'var2';
+            return 'def';
           }
 
           if (state.context == 2 && variables2.test(w)) {
             state.context = 4;
-            return 'var3';
+            return 'def';
           }
 
           if (keywords1.test(w)) {
