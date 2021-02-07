@@ -23,7 +23,7 @@
 			<button title="Run program" style="border:none; padding:8px 32px">
 				<font size="5" face="monospace">(▶)</font>
 			</button>
-			<button title="Copy Permalink" style="border:none; padding:3px">
+			<button title="Copy Permalink" id="permalink" style="border:none; padding:3px">
 				<font size="5" face="monospace">[ 🔗</font>
 			</button>
 			<font size="5" face="monospace">/</font>
@@ -35,9 +35,9 @@
 			</button>
 		</font>
 		<div align="left">
-			<label><font face="monospace" size="4" color="#C0C0C0">CODE FORMAT: </font>
-				<select name = "input-type" style="border:none">
-					<option type="radio" name="input-format" checked="checked" value="assembly">Assembly</option>
+			<label><font face="monospace" size="4">CODE FORMAT: </font>
+				<select id="code-format" name = "input-type" style="border:none">
+					<option type="radio" name="input-format" checked="checked" value="raw">Assembly</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
 				</select>
 			</label>
@@ -45,16 +45,16 @@
 		<textarea id="code" rows="1"></textarea>
 		<br/>
 		<div align="left">
-			<label><font face="monospace" size="3" color="#D3D3D3">INPUT FORMAT: </font>
-				<select name = "input-type" style="border:none">
-					<option type="radio" name="input-format" checked="checked" value="raw bytes">raw bytes</option>
+			<label><font face="monospace" size="4">INPUT FORMAT: </font>
+				<select id="input-format" name = "input-type" style="border:none">
+					<option type="radio" name="input-format" checked="checked" value="raw">raw bytes</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
 				</select>
 			</label>
 		</div>
 		<textarea id="input" rows="1"></textarea>
 		<br/>
-		<div align="left"><b><font face="monospace" size="3">OUTPUT ↓ </font></b></div>
+		<div align="left"><b><font face="monospace" size="4">OUTPUT ↓ </font></b></div>
 		<textarea id="output" rows="1"></textarea>
 		</div>
 		<hr/>
