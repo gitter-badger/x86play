@@ -1,3 +1,11 @@
+function deflate(arr) {
+	return pako.deflateRaw(arr, { "level": 9 });
+}
+
+function inflate(arr) {
+	return pako.inflateRaw(arr);
+}
+
 window.onload = function() {
 	var code = document.getElementById("code");
 	var output = document.getElementById("output");
@@ -11,7 +19,7 @@ window.onload = function() {
 		scrollbarStyle: null
 	});
 	var CInput = CodeMirror.fromTextArea(input, {
-		mode: "text/x-ez80",
+		mode: "text",
 		theme: "material",
 		lineNumbers: true,
 		lineWrapping: true,
@@ -19,9 +27,9 @@ window.onload = function() {
 		scrollbarStyle: null
 	});
 	var COutput = CodeMirror.fromTextArea(output, {
-		mode: "text/x-ez80",
+		mode: "text",
 		theme: "material",
-		lineNumbers: true,
+		lineNumbers: false,
 		lineWrapping: true,
 		indentWithTabs: true,
 		readOnly: true,

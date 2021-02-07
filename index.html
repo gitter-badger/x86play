@@ -20,19 +20,20 @@
 	<body style="margin:0px 15px">
 		<div class="main" style="float:left; width:73%">
 		<h2>x86play
-			<button style="border:none">
-				<font size="5" face="monospace">[Run]</font>
+			<button style="border:none; padding:8px 32px">
+				<font size="5" face="monospace">(▶)</font>
 			</button>
-			<button style="border:none">
-				<font size="5" face="monospace">[CMCify]</font>
+			<button style="border:none; padding:3px">
+				<font size="5" face="monospace">[Copy Link</font>
 			</button>
-			<button style="border:none">
-				<font size="5" face="monospace">[Postify]</font>
+			<font size="5" face="monospace">/</font>
+			<button style="border:none; padding:3px">
+				<font size="5" face="monospace">Copy Markdown]</font>
 			</button>
 		</h2>
 		<div align="left">
-			<label><font face="monospace" size="4">CODE FORMAT&nbsp;</font>
-				<select name = "input-type">
+			<label><font face="monospace" size="4">CODE FORMAT: </font>
+				<select name = "input-type" style="border:none">
 					<option type="radio" name="input-format" checked="checked" value="assembly">Assembly</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
 				</select>
@@ -41,8 +42,8 @@
 		<textarea id="code" rows="1"></textarea>
 		<br/>
 		<div align="left">
-			<label><font face="monospace">INPUT FORMAT&nbsp;</font>
-				<select name = "input-type">
+			<label><font face="monospace">INPUT FORMAT: </font>
+				<select name = "input-type" style="border:none">
 					<option type="radio" name="input-format" checked="checked" value="raw bytes">raw bytes</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
 				</select>
@@ -50,9 +51,10 @@
 		</div>
 		<textarea id="input" rows="1"></textarea>
 		<br/>
-		<div align="left"><b><font face="monospace">OUTPUT</font></b></div>
+		<div align="left"><b><font face="monospace">OUTPUT ↓ </font></b></div>
 		<textarea id="output" rows="1"></textarea>
 		</div>
+		<hr/>
 		<div class="sidebar" style="float:left; width:26%; margin:3px">
 		<font face="monospace">
 			Welcome to x86play.<br/><br/>
