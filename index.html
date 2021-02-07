@@ -17,21 +17,21 @@
 		<script src="codemirror/mode/z80/z80.js"></script>
 		<script src="index.js"></script>
 	</head>
-	<body>
-		<div class="main" style="float:left; width:74%">
+	<body style="margin:0px 15px">
+		<div class="main" style="float:left; width:73%">
 		<h2>x86play
-			<button>
-				<font size="4">Run</font>
+			<button style="border:none">
+				<font size="5" face="monospace">[Run]</font>
 			</button>
-			<button>
-				<font size="4">CMCify</font>
+			<button style="border:none">
+				<font size="5" face="monospace">[CMCify]</font>
 			</button>
-			<button>
-				<font size="4">Postify</font>
+			<button style="border:none">
+				<font size="5" face="monospace">[Postify]</font>
 			</button>
 		</h2>
 		<div align="left">
-			<label>CODE FORMAT&nbsp;
+			<label><font face="monospace" size="4">CODE FORMAT&nbsp;</font>
 				<select name = "input-type">
 					<option type="radio" name="input-format" checked="checked" value="assembly">Assembly</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
@@ -41,7 +41,7 @@
 		<textarea id="code" rows="1"></textarea>
 		<br/>
 		<div align="left">
-			<label>INPUT FORMAT&nbsp;
+			<label><font face="monospace">INPUT FORMAT&nbsp;</font>
 				<select name = "input-type">
 					<option type="radio" name="input-format" checked="checked" value="raw bytes">raw bytes</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
@@ -50,12 +50,13 @@
 		</div>
 		<textarea id="input" rows="1"></textarea>
 		<br/>
-		<div align="left"><b>OUTPUT</b></div>
+		<div align="left"><b><font face="monospace">OUTPUT</font></b></div>
 		<textarea id="output" rows="1"></textarea>
 		</div>
-		<div class="sidebar" style="float:left; width:25%">
-			Welcome to x86play.<br/>
+		<div class="sidebar" style="float:left; width:26%; margin:3px">
+		<font face="monospace">
+			Welcome to x86play.<br/><br/>
 			This is a placeholder sidebar (for a quickref infobar)
+		</font>
 		</div>
 	</body>
-</html>
