@@ -59,7 +59,7 @@ CodeMirror.defineMode('z80', function(_config, parserConfig) {
           } else if (keywords2.test(w)) {
             state.context = 2;
             return 'keyword';
-          } else if (state.context == 4 && numbers.test(w)) {
+          } else if (state.context >= 1 && numbers.test(w)) {
             return 'number';
           }
 
@@ -83,8 +83,14 @@ CodeMirror.defineMode('z80', function(_config, parserConfig) {
         }
         return 'string';
       } else if (stream.eat('\'')) {
-        if (stream.match(/\\?.'/))
-          return 'number';
+        while (w = stream.next()) {
+          if (w == '\'')
+            break;
+
+          if (w == '\\')
+            stream.next();
+        }
+        return 'string';
       } else if (stream.eat('.') || stream.sol() && stream.eat('#')) {
         state.context = 5;
         if (stream.eatWhile(/\w/))
