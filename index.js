@@ -67,6 +67,8 @@ window.onload = function() {
 	});
 	CCode.on("change", e => {
 		CCode.save()
+		length = document.getElementById("length")
+		length.innerHTML = code.value.length;
 	})
 	CInput.on("change", e => {
 		CInput.save()
@@ -80,7 +82,7 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		output.innerText="(link copied to clipboard)"
+		output.innerText=link
 		copyToClipboard(link);
 	})
 	document.getElementById("markdown").addEventListener('click', (event) => {
@@ -92,12 +94,12 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\nbinary:\n```\n"
+		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\nBinary:\n```\n"
 		    + "hexdump here"+"\n```\n\nListing:\n```\n"
 		    + "listing here"
 		    + "\n```\n\n"
 		    + ((submType.value=="function")?"Callable function. Inputs <input> in <reg>, <input> in <reg>. Result in <reg>.\n\n":"Standalone DOS .COM executable. Input from STDIN, output to STDOUT.\n\n")
-		    + "[Try it on x86play]("+link+")"
+		    + "[Try it on x86play!]("+link+")"
 		output.innerText=fmt
 		copyToClipboard(fmt);
 	})
