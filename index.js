@@ -91,7 +91,12 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\n```\n"+"hexdump here"+"\n```\n\nInstruction listing:\n```"+link
+		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\nbinary:\n```\n"
+		    + "hexdump here"+"\n```\n\nListing:\n```\n"
+		    + "listing here"
+		    + "\n```\n\n"
+		    + "Standalone PC DOS executable. Input via command line, output to console.\n\n"
+		    + "[Try it on x86play]("+link+")"
 		output.innerText=fmt
 		copyToClipboard(fmt);
 	})
