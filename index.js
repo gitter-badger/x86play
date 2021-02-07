@@ -17,6 +17,23 @@ function b64ToArr(str) {
 }
 
 window.onload = function() {
+	const copyToClipboard = str => {
+		const el = document.createElement('textarea');
+		el.value = str;
+		el.setAttribute('readonly', '');
+		el.style.position = 'absolute';
+		el.style.left = '-9999px';
+		document.body.appendChild(el);
+		const selected =
+			document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+		el.select();
+		document.execCommand('copy');
+		document.body.removeChild(el);
+		if (selected) {
+			document.getSelection().removeAllRanges();
+			document.getSelection().addRange(selected);
+		}
+	};
 	const urlParams = new URLSearchParams(window.location.search)
 	var code = document.getElementById("code");
 	var output = document.getElementById("output");
@@ -62,6 +79,7 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		output.innerText=link
+		output.innerText=link+"\n\n(link copied to clipboard)"
+		copyToClipboard(link);
 	})
 }
