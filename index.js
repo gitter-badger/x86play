@@ -1,5 +1,3 @@
-opcodes = ['AAA', 'AAD', 'AAM', 'AAS', 'ADC', 'ADD', 'ADDRSIZ', 'AND', 'ARPL', 'BOUND', 'BSF', 'BSF', 'BSWAP', 'BT', 'BTC', 'BTR', 'BTS', 'CBW', 'CLC', 'CLD', 'CLI', 'CMC', 'CMP', 'CMPSB', 'DI+=1;', 'CMPSW', 'CMPXCHG', 'CMPXCHG8B', 'CPUID', 'CTS', 'CLTS', 'CWD', 'DAA', 'DAS', 'DEC', 'DIV', 'ENTER', 'FWAIT', 'HLT', 'IDIV', 'IMUL', 'IMUL', 'IN', 'IN', 'INC', 'INSB', 'INSW', 'INT', 'INTO', 'INVD', 'INVLPG', 'IRET', 'JA', 'JAE', 'JB', 'JC', 'JCXZ', 'JE', 'JECXZ', 'JG', 'JGE', 'JL', 'JLE', 'JMP', 'JNB', 'JNBE', 'JNC', 'JNE', 'JNG', 'JNGE', 'JNGE', 'JNL', 'JNO', 'JNP', 'JNS', 'JNZ', 'JO', 'JP', 'JPE', 'JPO', 'JS', 'JZ', 'LAHF', 'LAR', 'LDS', 'LEA', 'LEAVE', 'LES', 'LFS', 'LGDT', 'LGS', 'LIDT', 'LLDT', 'LMSW', 'LOCK', 'LODSB', 'LODSW', 'LOOP', 'LOOPE', 'LOOPNE', 'LOOPNZ', 'LOOPZ', 'LSL', 'LSS', 'LTR', 'MOV', 'MOV', 'MOV', 'MOV', 'MOV', 'MOV', 'MOV', 'MOVSB', 'MOVSW', 'MOVSXB', 'MOVSXW', 'MUL', 'NEG', 'NOT', 'OR', 'OUT', 'OUT', 'OUTS', 'OUTSB', 'POP', 'POPA', 'POPF', 'PUSH', 'PUSH', 'PUSHA', 'PUSHF', 'RCL', 'RCR', 'RDMSR', 'RDTSC', 'REP', 'REPE', 'REPZ', 'REPNE', 'REPNZ', 'ROL', 'ROR', 'SAHF', 'SAL', 'SAR', 'SBB', 'SCASB', 'SCASW', 'SEG', 'SETccc', 'SGDT', 'SHL', 'SHLD', 'SHR', 'SHRD', 'SIDT', 'SIZ', 'SLDT', 'SMSW', 'STC', 'STD', 'STD', 'STI', 'STOSB', 'STOSW', 'STR', 'SUB', 'TEST', 'VERR', 'VERW', 'WAIT', 'WBINVD', 'WRMSR', 'XADD', 'XCHG', 'XLAT', 'XOR']
-
 function deflate(arr) {
 	return pako.deflate(arr, { "level": 9 });
 }
@@ -73,10 +71,23 @@ window.onload = function() {
 		length.innerHTML = code.value.length;
 	})
 	CCode.on("cursorActivity", function() {
-		token = CCode.getTokenAt(CCode.getCursor()).string.toUpperCase()
-		console.log(token)
-		if(opcodes.indexOf(token) != -1) {
-			document.getElementById("code-hint").innerHTML = token;
+		tok = CCode.getTokenAt(CCode.getCursor())
+		hint = document.getElementById("code-hint")
+		token = tok.string.toUpperCase()
+		console.log(tok)
+		if(tok.type=="keyword") {
+			hint.innerHTML = " Opcodes: <u>" + token + "</u>";
+		} else if(tok.type="def") {
+			if(token[0]==";")
+				hint.innerHTML = " <u>Comments</u>";
+			else if(token[0]==".")
+				hint.innerHTML = " <u>Assembler Directives</u>";
+			else if(token.match("[ABCD][XLH]|[CDES]S|[SD]I|[BIS]P")!=null)
+				hint.innerHTML = " Registers: <u>" + token + "</u>";
+			else
+				hint.innerHTML = "";
+		} else if(tok.type==null) {
+			hint.innerHTML = "";
 		}
 	});
 	CInput.on("change", e => {
