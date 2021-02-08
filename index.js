@@ -123,4 +123,38 @@ window.onload = function() {
 		output.innerText=fmt
 		copyToClipboard(fmt);
 	})
+	document.getElementById("collapse-code").addEventListener('click', (event) => {
+		codearea = document.getElementById("codearea")
+		collapseCode = document.getElementById("collapse-code")
+		if(codearea.getAttribute("hidden")==null) {
+			codearea.setAttribute("hidden","")
+			collapseCode.innerHTML = "▶"+collapseCode.innerHTML.slice(1)
+		} else {
+			codearea.removeAttribute("hidden")
+			collapseCode.innerHTML = "▼"+collapseCode.innerHTML.slice(1)
+		}
+	})
+	document.getElementById("collapse-input").addEventListener('click', (event) => {
+		codearea = document.getElementById("inputarea")
+		collapseInput = document.getElementById("collapse-input")
+		if(codearea.getAttribute("hidden")==null) {
+			codearea.setAttribute("hidden","")
+			collapseInput.innerHTML = "▶"+collapseInput.innerHTML.slice(1)
+		} else {
+			codearea.removeAttribute("hidden")
+			collapseInput.innerHTML = "▼"+collapseInput.innerHTML.slice(1)
+		}
+	})
+	document.getElementById("collapse-output").addEventListener('click', (event) => {
+		codearea = document.getElementById("outputarea")
+		collapseInput = document.getElementById("collapse-output")
+		if(codearea.getAttribute("hidden")==null) {
+			codearea.setAttribute("hidden","")
+			collapseInput.innerHTML = "▶"+collapseInput.innerHTML.slice(1)
+		} else {
+			codearea.removeAttribute("hidden")
+			collapseInput.innerHTML = "▼"+collapseInput.innerHTML.slice(1)
+		}
+	})
+
 }

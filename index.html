@@ -35,29 +35,34 @@
 			</button>
 		</font>
 		<div align="left">
-			<label><font face="monospace" size="4">CODE FORMAT: </font>
+			<label><font face="monospace" size="4" id="collapse-code">▼ CODE FORMAT: </font>
 				<select id="code-format" name = "input-type" style="border:none">
 					<option type="radio" name="input-format" checked="checked" value="raw">Assembly</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
 				</select>
 			</label>
 		</div>
-		<div><font face="monospace">HINT:<span id="code-hint"></span></font></div>
-		<div align="right"><font face="monospace"><span id="length">0</span> bytes, undefined bytes assembled&nbsp;</font></div>
-		<textarea id="code" rows="1"></textarea>
-		<br/>
+		<div id="codearea">
+			<div><font face="monospace">HINT:<span id="code-hint"></span></font></div>
+			<div align="right"><font face="monospace"><span id="length">0</span> bytes, undefined bytes assembled&nbsp;</font></div>
+			<textarea id="code" rows="1"></textarea>
+		</div>
 		<div align="left">
-			<label><font face="monospace" size="4">INPUT FORMAT: </font>
+			<label><font face="monospace" size="4" id="collapse-input">▼ INPUT FORMAT: </font>
 				<select id="input-format" name = "input-type" style="border:none">
 					<option type="radio" name="input-format" checked="checked" value="raw">raw bytes</option>
 					<option type="radio" name="input-format" value="xxd">xxd</option>
 				</select>
 			</label>
 		</div>
-		<textarea id="input" rows="1"></textarea>
 		<br/>
-		<div align="left"><b><font face="monospace" size="4">OUTPUT ↓ </font></b></div>
+		<div id="inputarea">
+			<textarea id="input" rows="1"></textarea>
+		</div>
+		<div align="left"><b><font face="monospace" size="4" id="collapse-output">▼ OUTPUT ↓ </font></b></div>
+		<div id="outputarea">
 		<pre id="output" rows="1" style="white-space: pre-wrap;" border=0></pre>
+		</div>
 		</div>
 
 		<div class="sidebar" style="float:left; width:25%; margin:3px">
