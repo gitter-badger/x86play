@@ -115,13 +115,16 @@ window.onload = function() {
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
 		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\nBinary:\n```\n"
-		    + "hexdump here"+"\n```\n\nListing:\n```\n"
+		    + xxd(code.value.split("").map(x=>x.charCodeAt(0))) + "\n```\n\nListing:\n```\n"
 		    + "listing here"
 		    + "\n```\n\n"
 		    + ((submType.value=="function")?"Callable function. Inputs <input> in <reg>, <input> in <reg>. Result in <reg>.\n\n":"Standalone DOS .COM executable. Input from STDIN, output to STDOUT.\n\n")
 		    + "[Try it on x86play!]("+link+")"
 		output.innerText=fmt
 		copyToClipboard(fmt);
+	})
+	document.getElementById("run").addEventListener('click', (event) => {
+		output.innerHTML = "Bytecode interpreter is not implemented yet!"
 	})
 	document.getElementById("collapse-code").addEventListener('click', (event) => {
 		codearea = document.getElementById("codearea")
