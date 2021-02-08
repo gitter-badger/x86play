@@ -32,5 +32,5 @@ function xxd(a){
 		}
 	}
 	output += line+" ".repeat(40-line.split(": ")[1].length)+" "+chars+"\n";
-	return output
+	return output.slice(0,output.length-1)
 }
