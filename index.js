@@ -82,7 +82,7 @@ window.onload = function() {
 				hint.innerHTML = " <u>Comments</u>";
 			else if(token[0]==".")
 				hint.innerHTML = " <u>Assembler Directives</u>";
-			else if(token.match("[ABCD][XLH]|[CDES]S|[SD]I|[BIS]P")!=null)
+			else if(token.match("[ABCD][XLH]|[CDES]S|[SD]I|[BIS]P")==token)
 				hint.innerHTML = " Registers: <u>" + token + "</u>";
 			else
 				hint.innerHTML = "";
