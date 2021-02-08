@@ -15,12 +15,14 @@
 		<link rel="stylesheet" href="codemirror/theme/material.css">
 		<link rel="stylesheet" href="darkmode.css">
 		<script src="codemirror/mode/z80/z80.js"></script>
+		<script src="xxd.js"></script>
+		<script src="asm.js"></script>
 		<script src="index.js"></script>
 	</head>
 	<body style="margin:0px 15px">
 		<div class="main" style="float:left; width:73%">
 		<font size="5">x86play
-			<button title="Run program" style="border:none; padding:8px 32px">
+			<button title="Run program" id="run" style="border:none; padding:8px 32px">
 				<font size="5" face="monospace">(▶)</font>
 			</button>
 			<button title="Copy Permalink to clipboard" id="permalink" style="border:none; padding:3px">
