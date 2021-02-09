@@ -118,7 +118,7 @@ window.onload = function() {
 		           )
 		fmt = "## x86-16 machine code, " + document.getElementById("assembled-length").innerHTML + " bytes\n\nBinary:\n```\n"
 		    + xxd(asm(code.value)) + "\n```\n\nListing:\n```\n"
-		    + code.value
+		    + Listing(code.value)
 		    + "\n```\n\n"
 		    + ((submType.value=="function")?"Callable function. Inputs <input> in <reg>, <input> in <reg>. Result in <reg>.\n\n":"Standalone DOS .COM executable. Input from STDIN, output to STDOUT.\n\n")
 		    + "[Try it on x86play!]("+link+")"

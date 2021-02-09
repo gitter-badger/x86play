@@ -46,13 +46,19 @@ function asm(s) {
 
 function Listing(code) {
 	// Produces an "instruction listing" with bytecode on the side
-	a=code.toUpperCase().split("\n")
-	for(i=0;i<a.length;i++)
-		console.log(asm(a[i]).map((i) => {
-			x=i.toString(16).length;
-			return "0".repeat(2-x)+i.toString(16).toUpperCase()
-		}).join(" ")+ " " + a[i-1])
-	return a
+	SPLITTED_CODE=code.toUpperCase().split("\n")
+	OUTPUT = "";
+	for(TMP=0;TMP<SPLITTED_CODE.length;TMP++) {
+		console.log(SPLITTED_CODE[TMP])
+		result = asm(SPLITTED_CODE[TMP]).map((xx) => {
+			x=xx.toString(16).length;
+			return "0".repeat(2-x)+xx.toString(16).toUpperCase()
+		}).join(" ")
+		
+		OUTPUT += result + " ".repeat(18 - result.length) + SPLITTED_CODE[TMP] + '\n'
+	}
+	console.log(SPLITTED_CODE)
+	return OUTPUT
 }
 
 function disasm(s) {
