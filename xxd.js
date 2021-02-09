@@ -9,6 +9,7 @@ function unxxd(a) {
 }
 
 function xxd(a){
+	if(a.length==0) return "";
 	counter = 0;
 	output = "";
 	line = "";
