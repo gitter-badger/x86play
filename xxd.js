@@ -8,7 +8,7 @@ function unxxd(a) {
 	return b.slice(0,b.length).split(",").map(i=>eval("0x"+i))
 }
 
-function xxd(a){
+function xxd(a) {
 	if(a.length==0) return "";
 	counter = 0;
 	output = "";
