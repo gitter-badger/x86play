@@ -1,4 +1,5 @@
 function analyze(args) {
+	// Detect the type inside the arguments.
 	args = args.replace(", ",",")
 	return args.split(",").map((i) => {
 		if(i[1]=="X")
@@ -18,6 +19,7 @@ function regEncode(w, reg) {
 }
 
 function asm(s) {
+	// Outputs a list of assembled integer byte values.
 	if(s.length==0)return [];
 	a = s.toUpperCase().split("\n")
 	bitcode = ""

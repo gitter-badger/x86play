@@ -126,7 +126,7 @@ window.onload = function() {
 		copyToClipboard(fmt);
 	})
 	document.getElementById("run").addEventListener('click', (event) => {
-		output.innerHTML = "Bytecode interpreter is not implemented yet!"
+		output.innerHTML = execute(asm(code.value))
 	})
 	document.getElementById("collapse-code").addEventListener('click', (event) => {
 		codearea = document.getElementById("codearea")

@@ -1,4 +1,5 @@
 function unxxd(a) {
+	// Hexdump string -> List of ord codes
 	b = a.split("\n").map(i => {
 		x = i.split("  ")[0].split(":")[1].slice(1).split(" ")
 		x = x.map(y=>[y.slice(0,2),y.slice(2,4)]).join()
@@ -9,6 +10,7 @@ function unxxd(a) {
 }
 
 function xxd(a) {
+	// List of ord codes -> hexdump string
 	if(a.length==0) return "";
 	counter = 0;
 	output = "";
