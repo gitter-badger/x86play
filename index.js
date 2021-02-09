@@ -69,6 +69,8 @@ window.onload = function() {
 		CCode.save()
 		length = document.getElementById("length")
 		length.innerHTML = code.value.length;
+		asmLength = document.getElementById("assembled-length")
+		asmLength.innerHTML = asm(code.value).length;
 	})
 	CCode.on("cursorActivity", function() {
 		tok = CCode.getTokenAt(CCode.getCursor())
@@ -114,7 +116,7 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		fmt = "## x86-16 machine code, " + code.value.length + " bytes\n\nBinary:\n```\n"
+		fmt = "## x86-16 machine code, " + document.getElementById("assembled-length").innerHTML + " bytes\n\nBinary:\n```\n"
 		    + xxd(asm(code.value)) + "\n```\n\nListing:\n```\n"
 		    + code.value
 		    + "\n```\n\n"
