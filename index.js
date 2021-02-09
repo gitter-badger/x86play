@@ -114,7 +114,7 @@ window.onload = function() {
 		                    +"&i="+e(input.value)
 		                    +"&f="+setfmt(cfmt.value, ifmt.value)
 		           )
-		fmt = "## x86-16 machine code, "+code.value.length+" bytes\n\nBinary:\n```\n"
+		fmt = "## x86-16 machine code, " + code.value.length + " bytes\n\nBinary:\n```\n"
 		    + xxd(asm(code.value)) + "\n```\n\nListing:\n```\n"
 		    + code.value
 		    + "\n```\n\n"

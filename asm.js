@@ -29,13 +29,10 @@ function asm(s) {
 	a = s.toUpperCase().split("\n")
 	bytecode = []
 	for(i=0;i<a.length;i++) {
-		try {
-			b = a[i].match(/(([A-Fa-f0-9]+ )*)(.*)(\;.*)/)[3];
-			b = b.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g," ")
-		} catch {
-			continue
-		}
-		q = b.split(' ')[0].toUpperCase())
+		b = a[i].match(/(([A-Fa-f0-9]+[ \t])*)?(.*)(\;.*)?/)[3];
+		b = b.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g," ")
+		q = b.split(' ')[0].toUpperCase()
+		console.log(q)
 		if(q == 'LODSW') {
 			bytecode.push(0xAD)
 		} else if (q == 'STD') {
