@@ -18,6 +18,7 @@ function regEncode(w, reg) {
 }
 
 function asm(s) {
+	if(s.length==0)return [];
 	a = s.toUpperCase().split("\n")
 	bitcode = ""
 	for(i=0;i<a.length;i++) {
