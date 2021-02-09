@@ -24,7 +24,6 @@ function asm(s) {
 		b = a[i].match(/(([A-Fa-f0-9]+[ \t])*)?(.*)(\;.*)?/)[3];
 		b = b.replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g," ")
 		q = b.split(' ')[0].toUpperCase()
-		console.log(q)
 		args = analyze(b.toUpperCase().split(" ").slice(1).join(" "))
 		if(q == 'MOV') {
 			bitcode += "1011" // So far we only need to handle load imm.
@@ -43,4 +42,19 @@ function asm(s) {
 	bitcode = bitcode.replace(/(\d)(?=(?:\d{8})+$)/g,"$1 ").split(" ")
 	bytecode = bitcode.map((i)=>parseInt(i,2))
 	return bytecode
+}
+
+function Listing(code) {
+	// Produces an "instruction listing" with bytecode on the side
+	a=code.toUpperCase().split("\n")
+	for(i=0;i<a.length;i++)
+		console.log(asm(a[i]).map((i) => {
+			x=i.toString(16).length;
+			return "0".repeat(2-x)+i.toString(16).toUpperCase()
+		}).join(" ")+ " " + a[i-1])
+	return a
+}
+
+function disasm(s) {
+	// TODO
 }
